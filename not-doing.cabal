@@ -1,0 +1,96 @@
+name:                not-doing
+version:             0.0.0.0
+synopsis:            What aren't you doing?
+-- description:         An app to track things that you aren't doing.
+license:             Apache-2.0
+license-file:        LICENSE
+author:              Eric Rochester
+maintainer:          erochest@gmail.com
+-- copyright:           2016 Eric Rochester
+-- category:
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  exposed-modules:     NotDoing.Actions.Default
+                     , NotDoing.Types
+  -- other-modules:
+  -- other-extensions:
+  build-depends:       base >=4.8 && <4.9
+                     , digestive-functors
+                     , errors
+                     -- , google-oauth2
+                     , lens
+                     , lucid
+                     , persistent
+                     , persistent-postgresql
+                     , Spock
+                     , Spock-digestive
+                     -- , Spock-worker
+                     , text
+                     , text-format
+                     -- , users
+                     -- , users-persistent
+                     -- , validate-input
+                     , wai
+                     , wai-middleware-static
+                     , warp
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable not-doing
+  main-is:             Main.hs
+  other-modules:       Opts
+                     , Types
+                     , WebRoutes
+  -- other-extensions:
+  build-depends:       base >=4.8 && <5
+                     , not-doing
+                     , errors
+                     , optparse-applicative
+                     , Spock
+                     , text
+                     , wai
+                     , wai-middleware-static
+                     , warp
+  hs-source-dirs:      app
+  ghc-options:         -O2
+                       -threaded
+                       -rtsopts
+                       "-with-rtsopts=-N"
+                       -- -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1"
+  default-language:    Haskell2010
+
+test-suite not-doing-specs
+  type:                exitcode-stdio-1.0
+  ghc-options:         -threaded -rtsopts
+  hs-source-dirs:      specs
+  main-is:             Specs.hs
+  other-modules:         NotDoing.TypesSpec
+  build-depends:         base
+                       , not-doing
+                       , errors
+                       , lens
+                       , text
+                       , QuickCheck
+                       , smallcheck
+                       , hspec
+  default-language:    Haskell2010
+
+benchmark not-doing-bench
+  type:                exitcode-stdio-1.0
+  ghc-options:         -O2
+                       -threaded
+                       -rtsopts
+  hs-source-dirs:      bench
+  main-is:             Bench.hs
+  -- other-modules:
+  build-depends:         base
+                       , not-doing
+                       , criterion
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/erochest/not-doing
