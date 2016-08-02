@@ -10,9 +10,12 @@ import           Web.Spock.Safe
 
 -- import           Types
 
-import NotDoing.Actions.Default
+import           NotDoing.Actions.Default
+import           NotDoing.Types
 
 
 webRoutes :: IO Middleware
-webRoutes = spockT id $
-    get root $ defaultAction
+webRoutes = do
+    let cfg = defaultSpockCfg () PCNoDatabase $ NotDoing ["./templates", "."]
+    spock cfg $
+        get root defaultAction

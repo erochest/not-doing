@@ -6,8 +6,8 @@ module NotDoing.Actions.Default where
 
 import           Web.Spock.Safe
 
--- import           NotDoing.Types
+import           NotDoing.Types
 
 
-defaultAction :: ActionCtxT ctx IO ()
+defaultAction :: NotDoingAction ctx ()
 defaultAction = text "Good-bye, cruel world!"

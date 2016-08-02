@@ -14,7 +14,9 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     NotDoing.Actions.Default
+                     , NotDoing.Templating
                      , NotDoing.Types
+                     -- , NotDoing.Utils
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.8 && <4.9
@@ -23,6 +25,8 @@ library
                      -- , google-oauth2
                      , lens
                      , lucid
+                     , mustache
+                     , parsec
                      , persistent
                      , persistent-postgresql
                      , Spock
@@ -30,6 +34,7 @@ library
                      -- , Spock-worker
                      , text
                      , text-format
+                     , transformers
                      -- , users
                      -- , users-persistent
                      -- , validate-input

@@ -1,19 +1,32 @@
--- {-# LANGUAGE DeriveDataTypeable         #-}
+{-# LANGUAGE DeriveDataTypeable         #-}
+{-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE TemplateHaskell            #-}
+
 -- {-# LANGUAGE DeriveFunctor              #-}
--- {-# LANGUAGE DeriveGeneric              #-}
 -- {-# LANGUAGE DeriveTraversable          #-}
--- {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -- {-# LANGUAGE OverloadedLists            #-}
--- {-# LANGUAGE OverloadedStrings          #-}
 -- {-# LANGUAGE RankNTypes                 #-}
 -- {-# LANGUAGE RecordWildCards            #-}
--- {-# LANGUAGE TemplateHaskell            #-}
 
 
 module NotDoing.Types where
 
 
--- import           Control.Lens
--- import           Data.Data
 -- import qualified Data.Text              as T
--- import           GHC.Generics           hiding (to)
+
+import           Control.Lens
+import           Data.Data
+import           GHC.Generics hiding (to)
+import           Web.Spock
+
+
+data NotDoingState
+    = NotDoing
+    { _templatePath :: ![FilePath]
+    } deriving (Show, Eq, Generic, Data, Typeable)
+$(makeLenses ''NotDoingState)
+
+type NotDoingApp ctx      = SpockCtxM ctx () () NotDoingState ()
+type NotDoingAction ctx a = SpockActionCtx ctx () () NotDoingState a
