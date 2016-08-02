@@ -13,7 +13,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     NotDoing.Actions.Default
+  exposed-modules:     NotDoing.Controllers
                      , NotDoing.Templating
                      , NotDoing.Types
                      -- , NotDoing.Utils

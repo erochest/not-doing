@@ -11,7 +11,7 @@ import           Web.Spock.Safe
 
 -- import           Types
 
-import           NotDoing.Actions.Default
+import           NotDoing.Controllers
 import           NotDoing.Types
 
 
@@ -22,4 +22,4 @@ webRoutes = do
     spock cfg $ do
         middleware $ staticPolicy $ addBase "./static"
 
-        get root defaultAction
+        get root getIndex

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 
-module NotDoing.Actions.Default where
+module NotDoing.Controllers where
 
 
 import qualified Data.Text           as T
@@ -12,8 +12,8 @@ import           NotDoing.Templating
 import           NotDoing.Types
 
 
-defaultAction :: NotDoingAction ctx ()
-defaultAction =
+getIndex :: NotDoingAction ctx ()
+getIndex =
     render "index.mustache"
            (object ["title" ~> ("Good-bye, cruel world!" :: T.Text)])
         >>= html
