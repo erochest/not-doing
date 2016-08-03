@@ -5,13 +5,13 @@ PORT=8080
 
 RUN=stack exec -- not-doing
 
+run: build
+	$(RUN) --port $(PORT)
+
 init: stack.yaml
 
 stack.yaml:
 	stack init --prefer-nightly
-
-run: build
-	$(RUN) --port $(PORT)
 
 docs:
 	stack haddock
@@ -49,8 +49,14 @@ clean:
 distclean: clean
 	rm stack.yaml
 
-build:
+build: static/css/style.css
 	stack build $(BUILD_FLAGS)
+
+static/css/style.css: sass/style.scss
+	sass $(SASS_OPTIONS) $< $@
+
+watch-sass:
+	sass --watch sass/style.scss:static/css/style.css
 
 test:
 	stack test $(BUILD_FLAGS)
