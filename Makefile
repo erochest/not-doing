@@ -62,6 +62,7 @@ watch-sass:
 	sass --watch sass/style.scss:static/css/style.css
 
 watch-purs:
+	pulp --watch browserify --src-path purs/ --to static/js/main.js
 
 test:
 	stack test $(BUILD_FLAGS)
