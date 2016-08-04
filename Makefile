@@ -56,7 +56,7 @@ static/css/style.css: sass/style.scss
 	sass $(SASS_OPTIONS) $< $@
 
 static/js/main.js: purs/Main.purs
-	pulp build --optimise --src-path purs/ --to $@
+	pulp build --src-path purs/ --to $@
 
 watch-sass:
 	sass --watch sass/style.scss:static/css/style.css
