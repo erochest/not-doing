@@ -49,14 +49,19 @@ clean:
 distclean: clean
 	rm stack.yaml
 
-build: static/css/style.css
+build: static/css/style.css static/js/main.js
 	stack build $(BUILD_FLAGS)
 
 static/css/style.css: sass/style.scss
 	sass $(SASS_OPTIONS) $< $@
 
+static/js/main.js: src/Main.purs
+	pulp browserify > $@
+
 watch-sass:
 	sass --watch sass/style.scss:static/css/style.css
+
+watch-purs:
 
 test:
 	stack test $(BUILD_FLAGS)

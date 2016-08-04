@@ -16,3 +16,9 @@ cabal.sandbox.config
 *.hp
 *.eventlog
 .stack-work/
+/bower_components/
+/node_modules/
+/.pulp-cache/
+/output/
+/.psci*
+/src/.webpack.js
