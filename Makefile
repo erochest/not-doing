@@ -55,8 +55,8 @@ build: static/css/style.css static/js/main.js
 static/css/style.css: sass/style.scss
 	sass $(SASS_OPTIONS) $< $@
 
-static/js/main.js: src/Main.purs
-	pulp browserify > $@
+static/js/main.js: purs/Main.purs
+	pulp build --optimise --src-path purs/ --to $@
 
 watch-sass:
 	sass --watch sass/style.scss:static/css/style.css
