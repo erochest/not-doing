@@ -1,7 +1,8 @@
 
 # BUILD_FLAGS=--pedantic --library-profiling --executable-profiling
 BUILD_FLAGS=--pedantic
-PORT=8080
+SASS_OPTIONS=--scss
+PORT=8000
 
 RUN=stack exec -- not-doing
 

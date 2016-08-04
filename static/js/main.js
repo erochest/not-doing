@@ -1833,7 +1833,7 @@ module.exports = {
 "use strict";
 var Prelude = require("../Prelude");
 var Control_Monad_Eff_Console = require("../Control.Monad.Eff.Console");
-var main = Control_Monad_Eff_Console.log("Good-bye, cruel world.");
+var main = Control_Monad_Eff_Console.log("Oops");
 module.exports = {
     main: main
 };
